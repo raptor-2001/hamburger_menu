@@ -1,0 +1,149 @@
+.menu_wrap{
+  position:fixed;
+  top:0;
+  left:0;
+  z-index: 1;
+}
+
+.menu_wrap .toggler{
+    position: absolute;
+    top:0;
+    left:0;
+    z-index: 2;
+    height:50px;
+    width:50px;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.menu_wrap .hamburger{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: var(--primary-color);
+    padding: 1rem;
+    width:60px;
+    height: 60px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Hamburger_Line */
+
+/* Middle Line */
+.menu_wrap .hamburger > div{
+    position: relative;
+    background-color: #fff;
+    flex:none;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    height: 2px;
+    transition: all 0.5s ease;
+}
+
+/* Top and Bottom */
+.menu_wrap .hamburger > div::before,
+.menu_wrap .hamburger > div::after{
+    content: '';
+    position:absolute;
+    background-color: #fff;
+    z-index: 1;
+    width:100%;
+    height: 2.5px;
+    top:-10px;
+}
+
+/* Seprating Top and Bottom */
+.menu_wrap .hamburger > div::after{
+    top:10px;
+}
+
+/* Toggler Animation */
+
+/* To make the burger  X */
+.menu_wrap .toggler:checked + .hamburger >div{
+    transform:rotate(135deg);
+}
+.menu_wrap .toggler:checked + .hamburger >div:before,
+.menu_wrap .toggler:checked + .hamburger >div:after{
+    top:0;
+    transform:rotate(90deg);
+}
+
+/* To rotate while hovering */
+.menu_wrap .toggler:checked:hover + .hamburger >div{
+    transform:rotate(250deg);
+}
+
+/* show menu */
+.menu_wrap .toggler:checked ~ .menu{
+    visibility: visible;
+}
+
+.menu_wrap .toggler:checked ~ .menu > div{
+    transform: scale(1);
+    transition-duration: var(--menu-speed);
+}
+
+.menu_wrap .toggler:checked ~ .menu > div > div{
+    opacity: 1;
+    transition: opacity 0.4s ease-out 0.5s;
+}
+/* Menu animation */
+
+.menu_wrap .menu{
+    position: fixed;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    overflow: none;
+    top:0;
+    left:0;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.menu_wrap .menu > div{
+    background-color: var(--overlay-color);
+    width:200vw;
+    height:200vw;
+    border-radius: 50%;
+    display: flex;
+    flex:none;
+    justify-content: center;
+    align-items: center;
+    transform: scale(0);
+    transition:all 0.4s ease;
+}
+
+.menu_wrap .menu > div > div{
+    width:90vw;
+    height: 100vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 0;
+    transition:opacity 0.4s ease;
+}
+
+.menu_wrap .menu > div > div > ul > li{
+    list-style: none;
+    color:#fff;
+    padding:0.6rem;
+    font-size: 1.3rem;
+}
+
+.menu_wrap .menu > div > div > ul > li > a{
+    color:inherit;
+    transition: color 0.4s ease-out;
+}
+
+.menu_wrap .menu > div > div > ul > li > a:hover{
+    color:var(--secondary-color);
+}
